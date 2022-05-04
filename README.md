@@ -1,6 +1,9 @@
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+API Brain agriculture
+
+### Node version 16.14.2
+Create .env file and configure database url connection (view .env.example)
 
 ## Installation
 
@@ -8,48 +11,52 @@
 $ npm install
 ```
 
-<<<<<<< HEAD
-## Run seedes
+## Run migrations and generate prisma client
 
 ```bash
-# development
+$ npx prisma migrate dev --name init
+$ npx prisma generate
+```
+## Run seed and generate mock data
+
+```bash
 $ npm run seed
 ```
 
 ## Running the app
 
 ```bash
-# development
-$ npm run start
-
 # watch mode
 $ npm run start:dev
 
 # production mode
 $ npm run start:prod
-=======
-## Running migrations
+```
+## API endpoints
 
 ```bash
-$ npx prisma migrate dev --name init
+# reports
+$ GET: http://localhost:9000/api/reports/total-farms
+$ GET: http://localhost:9000/api/reports/total-arable-area
+$ GET: http://localhost:9000/api/reports/total-hectares
+
+# producers
+$ GET: http://localhost:9000/api/producers/
+$ DELETE: http://localhost:9000/api/producers/1
+$ POST: http://localhost:9000/api/producers/
+$ PATCH: http://localhost:9000/api/producers/1
+
+# JSON
+{
+    "cpf": "12345678911",
+    "name": "Joquim Ribeiro",
+    "farm_name": "Fazenda do Joaquim",
+    "city": "Timbé do Sul",
+    "state": "SC",
+    "total_area": 250,
+    "total_arable_area": 180,
+    "total_vegetation_area": 70,
+    "crops": "Batata, Cebola, Aipin"
+}
 ```
 
-## Running seeds
-
-```bash
-$ npm run seeds
-```
-
-## Running the app
-
-```bash
-$ npm run start
->>>>>>> 3a78ac060627c4425a7d4d0c8b563c6b4e12fc56
-```
-
-## Generate prisma client
-
-```bash
-# development
-$ npx migrama generate
-```
