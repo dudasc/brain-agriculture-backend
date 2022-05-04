@@ -5,7 +5,7 @@ API Brain agriculture
 ### Node version 16.14.2
 Create .env file and configure database url connection (view .env.example).
 
-Create database "brain-agriculture" on postgre.
+Create database "brain-agriculture" on postgreSQL.
 
 ## Installation
 
