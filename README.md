@@ -32,4 +32,31 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+## API endpoints
+
+```bash
+# reports
+$ GET: http://localhost:9000/api/reports/total-farms
+$ GET: http://localhost:9000/api/reports/total-arable-area
+$ GET: http://localhost:9000/api/reports/total-hectares
+
+# producers
+$ GET: http://localhost:9000/api/producers/
+$ DELETE: http://localhost:9000/api/producers/1
+$ POST: http://localhost:9000/api/producers/
+$ PATCH: http://localhost:9000/api/producers/1
+
+# JSON
+{
+    "cpf": "12345678911",
+    "name": "Joquim Ribeiro",
+    "farm_name": "Fazenda do Joaquim",
+    "city": "Timbé do Sul",
+    "state": "SC",
+    "total_area": 250,
+    "total_arable_area": 180,
+    "total_vegetation_area": 70,
+    "crops": "Batata, Cebola, Aipin"
+}
+```
 
