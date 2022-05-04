@@ -21,7 +21,6 @@ export class ReportsController {
         try {
             return resp.send(await this.getTotalFarmsService.execute());
         } catch (error) {
-            console.log(error);
             throw new HttpException(
                 'Erro ao listar total de fazendas',
                 HttpStatus.BAD_REQUEST,
@@ -36,7 +35,6 @@ export class ReportsController {
         try {
             return resp.send(await this.getTotalHectaresService.execute());
         } catch (error) {
-            console.log(error);
             throw new HttpException(
                 'Erro ao listar total de fazendas',
                 HttpStatus.BAD_REQUEST,
@@ -51,7 +49,6 @@ export class ReportsController {
         try {
             return resp.send(await this.getTotalArableAreaService.execute());
         } catch (error) {
-            console.log(error);
             throw new HttpException(
                 'Erro ao listar total de fazendas',
                 HttpStatus.BAD_REQUEST,
