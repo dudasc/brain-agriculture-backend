@@ -31,7 +31,7 @@ export class ProducersController {
 		public createProducerService: CreateProducerService,
 		public updateProducerService: UpdateProducerService,
 		public removeProducerService: RemoveProducerService
-    ) {  }
+    ) { }
 
 	@Get()
     public async index(
@@ -91,13 +91,21 @@ export class ProducersController {
 	@Patch('/:id')
 	public async update(
 		@Param() params: Prisma.ProducerWhereUniqueInput,
-		@Body() data: Prisma.ProducerUpdateInput,
+		@Body() data: Prisma.ProducerCreateInput,
 		@Res() resp: Response,
 	) {
 	    try {
-	        return resp.send(await this.removeProducerService.execute(params));
+	        return resp.send(await this.updateProducerService.execute(params, data));
 	    } catch (error) {
 	        console.log(error);
+
+	        if (error instanceof UserAlreadyExistsException) {
+	            throw new HttpException(
+	                error.getMessage(),
+	                HttpStatus.INTERNAL_SERVER_ERROR,
+	            );
+	        }
+
 	        throw new HttpException(
 	            'Erro ao atualizar o produtor',
 	            HttpStatus.BAD_REQUEST,
