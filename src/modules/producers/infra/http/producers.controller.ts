@@ -39,11 +39,8 @@ export class ProducersController {
 		@Res() resp: Response,
     ) {
         try {
-            console.log("get all producers");
-
             return resp.send(await this.findAllProducersService.execute(params));
         } catch (error) {
-            console.log(error);
             throw new HttpException(
                 'Erro ao listar produtores',
                 HttpStatus.BAD_REQUEST,
@@ -97,8 +94,6 @@ export class ProducersController {
 	    try {
 	        return resp.send(await this.updateProducerService.execute(params, data));
 	    } catch (error) {
-	        console.log(error);
-
 	        if (error instanceof UserAlreadyExistsException) {
 	            throw new HttpException(
 	                error.getMessage(),
@@ -121,7 +116,6 @@ export class ProducersController {
 	    try {
 	        return resp.send(await this.removeProducerService.execute(params));
 	    } catch (error) {
-	        console.log(error);
 	        throw new HttpException(
 	            'Erro ao remover o produtor',
 	            HttpStatus.BAD_REQUEST,
