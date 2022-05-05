@@ -19,8 +19,8 @@ export default class CreateProducerService {
             throw new UserAlreadyExistsException("CPF informado já existe");
         }
 
-        if ((data?.total_arable_area + data?.total_vegetation_area) > data.total_area) {
-            throw new InvalidTotalAreaException("A soma da área arável e da área de vegetação não pode ser maior que a área total");
+        if ((data?.total_arable_area + data?.total_vegetation_area) !== data.total_area) {
+            throw new InvalidTotalAreaException("A soma da área arável e da área de vegetação deve ser igual a área total");
         }
 
         return await this.prismaService.producer.create({ data });
