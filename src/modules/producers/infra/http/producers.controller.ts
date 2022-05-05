@@ -14,6 +14,7 @@ import {
 import { Prisma, Producer } from '@prisma/client';
 import { Response } from 'express';
 import ListProducersParamsDto from '../../dtos/list-producers-params.dto';
+import InvalidTotalAreaException from '../../exceptions/invalid-total-area.exception';
 import UserAlreadyExistsException from '../../exceptions/user-already-exists.exception';
 import CreateProducerService from '../../services/create-producer.service';
 import FindAllProducersService from '../../services/find-all-producers.service';
@@ -78,6 +79,13 @@ export class ProducersController {
 	            );
 	        }
 
+	        if (error instanceof InvalidTotalAreaException) {
+	            throw new HttpException(
+	                error.getMessage(),
+	                HttpStatus.INTERNAL_SERVER_ERROR,
+	            );
+	        }
+
 	        throw new HttpException(
 	            'Erro ao inserir o produtor',
 	            HttpStatus.BAD_REQUEST,
@@ -95,6 +103,13 @@ export class ProducersController {
 	        return resp.send(await this.updateProducerService.execute(params, data));
 	    } catch (error) {
 	        if (error instanceof UserAlreadyExistsException) {
+	            throw new HttpException(
+	                error.getMessage(),
+	                HttpStatus.INTERNAL_SERVER_ERROR,
+	            );
+	        }
+
+	        if (error instanceof InvalidTotalAreaException) {
 	            throw new HttpException(
 	                error.getMessage(),
 	                HttpStatus.INTERNAL_SERVER_ERROR,
