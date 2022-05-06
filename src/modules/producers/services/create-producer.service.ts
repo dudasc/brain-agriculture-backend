@@ -11,7 +11,7 @@ export default class CreateProducerService {
     public async execute(data: Prisma.ProducerCreateInput): Promise<any> {
         const producer = await this.prismaService.producer.findFirst({
             where: {
-                cpf: data.cpf
+                cpf: data?.cpf
             }
         });
 
