@@ -42,6 +42,10 @@ $ GET: http://localhost:9000/api/reports/total-farms
 $ GET: http://localhost:9000/api/reports/total-arable-area
 $ GET: http://localhost:9000/api/reports/total-hectares
 
+#charts
+$ GET: http://localhost:9000/api/reports/type-area
+$ GET: http://localhost:9000/api/reports/farms-by-state
+
 # producers
 $ GET: http://localhost:9000/api/producers/
 $ DELETE: http://localhost:9000/api/producers/1
