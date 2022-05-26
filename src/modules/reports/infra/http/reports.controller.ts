@@ -1,5 +1,4 @@
-import { Controller, Get, HttpException, HttpStatus, Res } from "@nestjs/common";
-import { Response } from "express";
+import { Controller, Get } from "@nestjs/common";
 import GetTotalArableAreaService from "../../services/get-total-arable-area.service";
 import GetTotalFarmsByStateService from "../../services/get-total-farms-by-state.service";
 import GetTotalFarmsService from "../../services/get-total-farms.service";
@@ -19,72 +18,27 @@ export class ReportsController {
     ) { }
 
     @Get('total-farms')
-    public async getTotalFarms(
-        @Res() resp: Response,
-    ) {
-        try {
-            return resp.send(await this.getTotalFarmsService.execute());
-        } catch (error) {
-            throw new HttpException(
-                'Erro ao listar total de fazendas',
-                HttpStatus.BAD_REQUEST,
-            );
-        }
+    public async getTotalFarms() {
+        return await this.getTotalFarmsService.execute();
     }
 
     @Get('total-hectares')
-    public async getTotalHectares(
-        @Res() resp: Response,
-    ) {
-        try {
-            return resp.send(await this.getTotalHectaresService.execute());
-        } catch (error) {
-            throw new HttpException(
-                'Erro ao listar total de fazendas',
-                HttpStatus.BAD_REQUEST,
-            );
-        }
+    public async getTotalHectares() {
+        return await this.getTotalHectaresService.execute();
     }
 
     @Get('total-arable-area')
-    public async getTotalArableArea(
-        @Res() resp: Response,
-    ) {
-        try {
-            return resp.send(await this.getTotalArableAreaService.execute());
-        } catch (error) {
-            throw new HttpException(
-                'Erro ao listar total de fazendas',
-                HttpStatus.BAD_REQUEST,
-            );
-        }
+    public async getTotalArableArea() {
+        return await this.getTotalArableAreaService.execute();
     }
 
     @Get('farms-by-state')
-    public async getTotalFarmsByState(
-        @Res() resp: Response,
-    ) {
-        try {
-            return resp.send(await this.getTotalFarmsByStateService.execute());
-        } catch (error) {
-            throw new HttpException(
-                'Erro ao listar total de fazendas',
-                HttpStatus.BAD_REQUEST,
-            );
-        }
+    public async getTotalFarmsByState() {
+        return await this.getTotalFarmsByStateService.execute();
     }
 
     @Get('type-area')
-    public async getTotalAreaType(
-        @Res() resp: Response,
-    ) {
-        try {
-            return resp.send(await this.getTotalTypeAreaService.execute());
-        } catch (error) {
-            throw new HttpException(
-                'Erro ao listar total de fazendas',
-                HttpStatus.BAD_REQUEST,
-            );
-        }
+    public async getTotalAreaType() {
+        return await this.getTotalTypeAreaService.execute();
     }
 }

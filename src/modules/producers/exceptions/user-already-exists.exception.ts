@@ -1,14 +1,8 @@
 import { NotFoundException } from '@nestjs/common';
 
-class UserAlreadyExistsException {
-    private message: string;
-
-    public constructor(message: string) {
-        this.message = message;
-    }
-
-    public getMessage() {
-        return this.message;
+class UserAlreadyExistsException extends NotFoundException {
+    public constructor() {
+        super(`CPF informado já existe`);
     }
 }
 

@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { Prisma, Producer } from "@prisma/client";
 import { PrismaService } from "src/modules/prisma/services/prisma.service";
 import InvalidTotalAreaException from "../exceptions/invalid-total-area.exception";
@@ -19,17 +19,24 @@ export default class UpdateProducerService {
         });
 
         if (producer) {
-            throw new UserAlreadyExistsException("CPF informado já existe");
+            throw new UserAlreadyExistsException();
         }
 
         if ((data?.total_arable_area + data?.total_vegetation_area) !== data.total_area) {
-            throw new InvalidTotalAreaException("A soma da área arável e da área de vegetação deve ser igual a área total");
+            throw new InvalidTotalAreaException();
         }
 
         const where: any = {
             id: +params.id
         };
 
-        return await this.prismaService.producer.update({ data, where });
+        try {
+            return await this.prismaService.producer.update({ data, where });
+        } catch (error) {
+            throw new HttpException(
+                'Erro ao atualizar o produtor',
+                HttpStatus.NOT_FOUND,
+            );
+        }
     }
 }
