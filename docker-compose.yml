@@ -1,0 +1,12 @@
+version: "1.0"
+services:
+  imepel-node:
+    image: node:16.14.2
+    container_name: brain-agriculture-backend
+    user: "root"
+    restart: always
+    working_dir: /app
+    volumes:
+        - ./:/app
+    network_mode: "host"
+    command: bash -c "npm install ; npm run start:dev" 
