@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
-import { PrismaService } from "src/modules/prisma/services/prisma.service";
+import { PrismaService } from "../../prisma/services/prisma.service";
 
 @Injectable()
 export default class GetTotalFarmsService {
