@@ -22,7 +22,7 @@ describe('CreateProducerService', () => {
 
     it('should create a producer', async () => {
         const producerMock: Prisma.ProducerCreateInput = {
-            cpf: faker.random.alpha(11),
+            cpf: faker.random.numeric(11),
             name: faker.name.findName(),
             farm_name: faker.name.firstName(),
             city: faker.address.city(),
@@ -42,6 +42,6 @@ describe('CreateProducerService', () => {
 
         expect(await createProducerService.execute(producer)).toEqual(producerMock);
 
-        await prismaService.producer.delete({where: {id: producer.id}});
+        // await prismaService.producer.delete({where: {id: producer.id}});
     } );
 });
