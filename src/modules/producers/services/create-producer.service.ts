@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { Prisma } from "@prisma/client";
-import { PrismaService } from "src/modules/prisma/services/prisma.service";
+import { PrismaService } from "../../prisma/services/prisma.service";
 import InvalidTotalAreaException from "../exceptions/invalid-total-area.exception";
 import UserAlreadyExistsException from "../exceptions/user-already-exists.exception";
 

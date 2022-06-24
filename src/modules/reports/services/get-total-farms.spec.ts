@@ -1,4 +1,3 @@
-// import { PrismaService } from "src/modules/prisma/services/prisma.service";
 import { Test } from "@nestjs/testing";
 import { PrismaService } from "../../prisma/services/prisma.service";
 import GetTotalFarmsService from "./get-total-farms.service";
@@ -22,7 +21,7 @@ describe('GetTotalFarmsService', () => {
         it('should return total number of farms', async () => {
             const {total}: any = await getTotalFarmsService.execute();
 
-            expect(total).not.toBeUndefined();
+            expect(total).toEqual(expect.any(Number));
         });
     });
 });
